@@ -1,10 +1,10 @@
-// routes/tasks.js
+
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
 const { auth } = require('../middleware/auth');
 
-// GET /api/tasks — все задачи пользователя
+
 router.get('/', auth, async (req, res) => {
   try {
     const [rows] = await pool.query(
@@ -17,7 +17,6 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// POST /api/tasks — создать задачу
 router.post('/', auth, async (req, res) => {
   const { title } = req.body;
   if (!title || title.length < 3) {
@@ -35,7 +34,7 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// PUT /api/tasks/:id — обновить
+
 router.put('/:id', auth, async (req, res) => {
   const { title, completed } = req.body;
   const taskId = req.params.id;

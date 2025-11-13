@@ -1,4 +1,3 @@
-// POST /api/auth/register
 router.post('/register', async (req, res) => {
     const { email, password } = req.body;
     const hashed = await bcrypt.hash(password, 10);
